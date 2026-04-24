@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "Explainable Machine Learning for Payload-Free Intrusion Detection: A Reproducible Benchmark for Cybersecurity Education"
+message: "If you use this software or experiment package, please cite it as below."
+type: software
+authors:
+  - family-names: Liu
+    given-names: Yuanyuan
+    affiliation: "Nova Southeastern University; Johns Hopkins University"
+  - family-names: Li
+    given-names: Wei
+    affiliation: "Nova Southeastern University"
+version: "1.0.0"
+date-released: "2026-04-24"
+repository-code: "https://github.com/maxineliu2020/payload-free-ids-benchmark"
+keywords:
+  - intrusion detection
+  - cybersecurity education
+  - explainable machine learning
+  - SHAP
+  - network traffic analysis
+license: MIT
