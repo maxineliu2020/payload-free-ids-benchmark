@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Experiment outputs
+outputs/*.csv
+outputs/*.png
+outputs/*.log
+
+# Large raw datasets
+data/*.csv
+data/*.pcap
+data/*.zip
