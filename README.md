@@ -21,7 +21,6 @@ payload-free-ids-benchmark/
 ├── data/          # Placeholder for optional public CICIDS2017 CSV files
 ├── figures/       # Figures used in the manuscript
 ├── outputs/       # Generated outputs when users rerun the experiment
-├── paper/         # ACM-style manuscript files
 ├── results/       # Result tables used in the manuscript
 ├── CITATION.cff   # Citation metadata
 ├── LICENSE        # MIT License
