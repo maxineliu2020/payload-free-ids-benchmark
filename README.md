@@ -1,5 +1,7 @@
 # Explainable Machine Learning for Payload-Free Intrusion Detection
 
+[![DOI](https://zenodo.org/badge/1220463905.svg)](https://doi.org/10.5281/zenodo.19748632)
+
 This repository contains the reproducible experiment package for the AIFE 2026 manuscript:
 
 **Explainable Machine Learning for Payload-Free Intrusion Detection: A Reproducible Benchmark for Cybersecurity Education**
