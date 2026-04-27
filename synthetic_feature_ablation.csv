@@ -1,0 +1,9 @@
+# Outputs
+
+This folder stores generated experiment outputs. The subfolder `validated_run_2026_04_27/` contains a successful validation run generated with the following command:
+
+```bash
+python code/cisc650_payload_free_ids_benchmark.py --dataset synthetic --synthetic-samples 6000 --include-unsupervised --run-shap --output-dir outputs/validated_run_2026_04_27
+```
+
+Large generated datasets and raw CICIDS2017 files should not be committed unless needed for a specific release.
