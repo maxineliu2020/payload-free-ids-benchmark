@@ -19,20 +19,52 @@ This work was developed from the CISC 650 Computer Networks course project at No
 
 ```text
 payload-free-ids-benchmark/
-├── code/          # Python experiment script
-├── data/          # Placeholder for optional public CICIDS2017 CSV files
-├── figures/       # Figures used in the manuscript
-├── outputs/       # Generated outputs when users rerun the experiment
-├── results/       # Result tables used in the manuscript
-├── CITATION.cff   # Citation metadata
-├── LICENSE        # MIT License
-├── README.md      # Project documentation
-└── requirements.txt
+├── code/                  # Modular Python experiment script
+├── data/                  # Placeholder for optional public CICIDS2017 CSV files
+├── docs/                  # Modular workflow documentation
+├── figures/               # Figures generated from the validated run
+├── outputs/               # Complete generated outputs from a validation run
+├── results/               # CSV result tables used for reporting
+├── CITATION.cff           # Citation metadata
+├── LICENSE                # MIT License
+├── README.md              # Project documentation
+└── requirements.txt       # Python dependencies
 ```
 
 ## Scope note
 
-The experiments use payload-free flow-level features. This repository does not claim to process authentic encrypted healthcare packet captures, and CICIDS2017 is not described as a healthcare dataset. The package is intended for reproducible academic review and cybersecurity education, not clinical deployment.
+The experiments use payload-free flow-level features. This repository does **not** claim to process authentic encrypted healthcare packet captures, and CICIDS2017 is **not** described as a healthcare dataset. The package is intended for reproducible academic review and cybersecurity education, not clinical deployment.
+
+The public repository contains code, generated figures, result tables, and documentation. The submitted manuscript files are intentionally not included.
+
+## What changed in v1.1.0
+
+This version responds to Prof. Wei Li's feedback by strengthening the repository as a modular cybersecurity-education benchmark rather than a fixed three-model IDS experiment.
+
+Key updates:
+
+- Expanded supervised classifiers:
+  - Logistic Regression
+  - KNN
+  - Naive Bayes
+  - Linear SVM
+  - MLP
+  - Random Forest
+  - XGBoost
+- Added optional unsupervised baselines:
+  - PCA Reconstruction
+  - K-Means Distance
+- Added modular pipeline structure:
+  - dataset input
+  - preprocessing
+  - feature handling
+  - classifier execution
+  - metric generation
+  - plotting
+  - SHAP explainability
+- Added support for user-supplied flow-level CSV files.
+- Added validated output tables and figures.
+- Added modular workflow documentation.
 
 ## Installation
 
@@ -42,29 +74,51 @@ Create a clean Python environment, then install dependencies:
 pip install -r requirements.txt
 ```
 
-## Reproduce the synthetic stress-test experiment
+## Validated reproducibility run
+
+The following command was tested successfully and produced the included tables and figures:
 
 ```bash
-python code/cisc650_payload_free_ids_benchmark.py --synthetic-only --output-dir outputs
+python code/cisc650_payload_free_ids_benchmark.py --dataset synthetic --synthetic-samples 6000 --include-unsupervised --run-shap --output-dir outputs/validated_run_2026_04_27
 ```
 
-The script will generate synthetic IDS data, train Logistic Regression, Random Forest, and XGBoost models, and save result tables and figures to `outputs/`.
+The validation run completed successfully and generated:
+
+- `results/synthetic_model_metrics.csv`
+- `results/synthetic_feature_ablation.csv`
+- `results/synthetic_robustness.csv`
+- `figures/figure2_synthetic_roc_pr_curves.png`
+- `figures/figure3_synthetic_model_f1.png`
+- `figures/figure4_synthetic_feature_ablation_f1.png`
+- `figures/figure5_synthetic_robustness_f1.png`
+- `figures/figure6_synthetic_shap_summary.png`
 
 ## Optional CICIDS2017 benchmark
 
-Large CICIDS2017 CSV files are not bundled in this repository because of file size. To run the optional CICIDS2017 benchmark, place selected public CICIDS2017 CSV files in the `data/` folder and run:
+Large CICIDS2017 CSV files are not bundled in this repository because of file size. To run the optional CICIDS-style benchmark, place selected public CICIDS2017 CSV files in the `data/` folder and run:
 
 ```bash
-python code/cisc650_payload_free_ids_benchmark.py --data-dir data --output-dir outputs --max-rows-per-file 50000
+python code/cisc650_payload_free_ids_benchmark.py --dataset cicids --data-dir data --output-dir outputs/cicids_run --max-rows-per-file 50000
+```
+
+## User-supplied CSV benchmark
+
+Users may also provide their own flow-level CSV file:
+
+```bash
+python code/cisc650_payload_free_ids_benchmark.py --dataset user --input-csv data/my_flows.csv --label-column Label --output-dir outputs/user_run
 ```
 
 ## Main files
 
-- `code/cisc650_payload_free_ids_benchmark.py`: reproducible experiment script.
-- `figures/figure1_roc_pr_curves.png`: ROC and precision-recall curves.
-- `figures/figure2_shap_summary.png`: SHAP summary plot.
-- `results/synthetic_results_table.csv`: synthetic stress-test result table.
-- `paper/`: ACM-style manuscript files.
+- `code/cisc650_payload_free_ids_benchmark.py`: modular reproducible experiment script.
+- `docs/modular_workflow.md`: explanation of the modular workflow.
+- `figures/figure1_modular_workflow.png`: modular workflow diagram.
+- `figures/figure2_synthetic_roc_pr_curves.png`: ROC and precision-recall curves from the validated run.
+- `figures/figure6_synthetic_shap_summary.png`: SHAP summary plot from the validated run.
+- `results/synthetic_model_metrics.csv`: validated model comparison table.
+- `results/synthetic_feature_ablation.csv`: validated feature-group ablation table.
+- `results/synthetic_robustness.csv`: validated perturbation robustness table.
 
 ## License
 
@@ -72,4 +126,10 @@ The source code is released under the MIT License.
 
 ## Citation
 
-Please cite this repository using the information in `CITATION.cff`. A Zenodo DOI can be added after the first archived release.
+Please cite this repository using the metadata in `CITATION.cff`.
+
+Version-specific archived release DOI:
+
+```text
+10.5281/zenodo.19748633
+```

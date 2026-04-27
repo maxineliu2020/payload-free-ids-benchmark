@@ -1,5 +1,15 @@
 # Data folder
 
-Raw CICIDS2017 CSV files are not included in this repository because of file size.
+Place optional public IDS CSV files here if you want to reproduce CICIDS-style or user-supplied dataset experiments.
 
-To run the optional CICIDS2017 benchmark, download the public CICIDS2017 CSV files separately and place selected CSV files in this folder. The experiment script will detect CSV files with names containing `ISCX`, `WorkingHours`, or `CIC`.
+Large raw datasets are intentionally not included in this repository. The benchmark can be run with:
+
+```bash
+python code/cisc650_payload_free_ids_benchmark.py --dataset cicids --data-dir data --output-dir outputs --max-rows-per-file 50000
+```
+
+For a user-supplied CSV file, place the file in this folder and run:
+
+```bash
+python code/cisc650_payload_free_ids_benchmark.py --dataset user --input-csv data/my_flows.csv --label-column Label --output-dir outputs
+```

@@ -15,10 +15,11 @@ env/
 .DS_Store
 Thumbs.db
 
-# Experiment outputs
+# Generated experiment outputs
 outputs/*.csv
 outputs/*.png
 outputs/*.log
+outputs/*.json
 
 # Large raw datasets
 data/*.csv
